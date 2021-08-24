@@ -46,6 +46,9 @@ void createLinklist(struct node **head)
         temp->next = newnode;
     }
 }
+/*
+NO NEED TO  PASS ADDRESS OF FIRST AS WE DON'T HAVE TO CHANGE ADDRESS OF FIRST WE JUST WANT TO TRAVERSE A LINKEDLIST
+
 
 void displayLinklist(struct node **head)
 {
@@ -55,8 +58,23 @@ void displayLinklist(struct node **head)
         printf("%d =>", temp->data);
         temp = temp->next;
     }
-    // printf("\n");
+
 }
+
+*/
+
+
+void displayLinklist(struct node *head)
+{
+
+    while (head != NULL)
+    {
+        printf("%d =>", head->data);
+        head = head->next;
+    }
+    printf("\n");
+}
+
 void main()
 {
     struct node *first = NULL;
@@ -74,7 +92,7 @@ void main()
             createLinklist(&first);
             break;
         case 2:
-            displayLinklist(&first);
+            displayLinklist(first);
             break;
 
         case 0:
