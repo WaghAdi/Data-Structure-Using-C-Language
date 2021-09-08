@@ -26,7 +26,7 @@ struct node *creteNode()
     return newNode;
 }
 
-void creteLinkedList(struct node **head1, struct node **head2)
+void creteLinkedList(struct node **head1, struct node **head2,struct node **head3)
 {
     struct node *newNode = NULL;
     int choice;
@@ -56,6 +56,22 @@ lable:
         if (*head2 == NULL)
         {
             *head2 = newNode;
+        }
+        else
+        {
+            while (temp->next != NULL)
+            {
+                temp = temp->next;
+            }
+            temp->next = newNode;
+        }
+    }
+    else if(choice==3)
+    {
+        struct node *temp = *head3;
+        if (*head3 == NULL)
+        {
+            *head3 = newNode;
         }
         else
         {
@@ -111,30 +127,11 @@ void Display3(struct node *head3)
     }
     printf("\n");
 }
+
+
 void concatination(struct node *head1, struct node *head2, struct node **head3)
 {
-    if (head1 == NULL)
-    {
-        *head3 = head2;
-    }
-    else if (head2 == NULL)
-    {
-        *head3 = head1;
-    }
-    else if (head1 == NULL && head2 == NULL)
-    {
-        *head3 = NULL;
-    }
-    else
-    {
-        struct node *temp = head1;
-        while (temp->next != NULL)
-        {
-            temp = temp->next;
-        }
-        temp->next = head2;
-        *head3 = head1;
-    }
+   creteLinkedList();
 }
 
 void main()
@@ -167,7 +164,7 @@ void main()
             Display2(first3);
             break;
         case 5:
-            concatination(first1, first2, &first3);
+            concatination(first1, first2, first3);
             break;
         case 0:
             printf("THANK YOU\n");
