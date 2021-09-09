@@ -142,6 +142,101 @@ lable:
     }
 }
 
+//DELETION
+
+void deleteAtFirst(struct node **head, struct node **tail)
+{
+    if (*head == NULL)
+    {
+        printf("Linked List is already empty\n");
+    }
+    else
+    {
+        struct node *temp = NULL;
+        if ((*head)->next == NULL)
+        {
+            temp = *head;
+            *head = *tail = NULL;
+            free(temp);
+        }
+        else
+        {
+            temp = *head;
+            *head = (*head)->next;
+            (*head)->prev = NULL;
+            free(temp);
+        }
+    }
+}
+
+void deleteAtLast(struct node **head, struct node **tail)
+{
+    if (*head == NULL)
+    {
+        printf("Linked list is already empty\n");
+    }
+    else
+    {
+        struct node *temp = NULL;
+        if ((*head)->next == NULL)
+        {
+            temp = *head;
+            *head = *tail = NULL;
+            free(temp);
+        }
+        else
+        {
+            temp = *tail;
+            *tail = (*tail)->prev;
+            (*tail)->next = NULL;
+            free(temp);
+        }
+    }
+}
+
+void deleteAtPosition(struct node **head, struct node **tail)
+{
+    if (*head == NULL)
+    {
+        printf("LInked List is empty\n");
+    }
+    else
+    {
+        int position;
+        int n = countNode(*head);
+    lable:
+        printf("Enter Position\n");
+        scanf("%d", &position);
+        if (position == 1)
+        {
+            deleteAtFirst(head, tail);
+        }
+        else if (position == n)
+        {
+            deleteAtLast(head, tail);
+        }
+        else if (position > 1 && position < n)
+        {
+            struct node *temp = NULL;
+            struct node *temp1 = NULL;
+            temp = *head;
+            for (int i = 1; i < position - 1; i++)
+            {
+                temp = temp->next;
+            }
+            temp1 = temp->next;
+            temp->next = temp1->next;
+            temp1->next->prev = temp;
+            free(temp1);
+        }
+        else
+        {
+            printf("Invalid postion try again\n");
+            goto lable;
+        }
+    }
+}
+
 void main()
 {
     int choice;
@@ -155,6 +250,9 @@ void main()
         printf("4 insertAtFirst\n");
         printf("5 insertAtLastt\n");
         printf("6 insertAtPosition\n");
+        printf("7 DeleteAtFirst\n");
+        printf("8 DeleteAtLast\n");
+        printf("9 DeleteAtPosition\n");
         printf("0 Exit\n");
 
         printf("enter choice\n");
@@ -179,6 +277,15 @@ void main()
             break;
         case 6:
             insertAtPosition(&first, &last);
+            break;
+        case 7:
+            deleteAtFirst(&first, &last);
+            break;
+        case 8:
+            deleteAtLast(&first, &last);
+            break;
+        case 9:
+            deleteAtPosition(&first, &last);
             break;
         case 0:
             printf("Thank you\n");
