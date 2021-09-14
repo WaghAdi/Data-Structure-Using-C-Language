@@ -299,6 +299,33 @@ void deleteAtPosition(struct node **head)
     }
 }
 
+
+void reverseSinglyLinkedList(struct node **head)
+{   
+    printf("Inside function\n");
+    struct node *prevPtr=NULL;
+    struct node *currentPtr=(*head);
+    struct node *nextPtr=currentPtr->next;
+    printf("variable initializzzed\n");
+    int i=1;
+    while(currentPtr!=NULL)
+    { 
+        printf("Inside loop %d \n",i++);
+       currentPtr->next=prevPtr;
+       prevPtr=currentPtr;
+       currentPtr=nextPtr;
+       //if conditin need because of segmentation fault
+       if(currentPtr==NULL)
+       {
+           break;
+       }
+       nextPtr=nextPtr->next;
+    }
+    printf("outside loop\n");
+    (*head)=prevPtr;
+
+}
+
 void main()
 {
     printf("Welcome user!!!\n");
@@ -315,6 +342,7 @@ void main()
         printf("6 Delete node at first\n");
         printf("7 Delete node at Last \n");
         printf("8 Delete node at any Position\n");
+        printf("9 reverse linked list\n");
         printf("0 Exit \n");
         printf("Enter you choice\n");
         scanf("%d", &choice);
@@ -345,6 +373,9 @@ void main()
         case 8:
             deleteAtPosition(&first);
             break;
+        case 9:
+             reverseSinglyLinkedList(&first);
+             break;
 
         case 0:
             printf("Thank you user!!!\n");

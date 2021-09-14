@@ -237,6 +237,34 @@ void deleteAtPosition(struct node **head, struct node **tail)
     }
 }
 
+void reverseDoublyLinkedList(struct node **head,struct node **tail)
+{   
+    printf("Inside function\n");
+    struct node *prevPtr=NULL;
+    struct node *currentPtr=(*head);
+    struct node *nextPtr=currentPtr->next;
+    printf("variable initializzzed\n");
+    int i=1;
+    while(currentPtr!=NULL)
+    { 
+        printf("Inside loop %d \n",i++);
+       currentPtr->next=prevPtr;
+       currentPtr->prev=nextPtr;
+       prevPtr=currentPtr;
+       currentPtr=nextPtr;
+       //if conditin need because of segmentation fault
+       if(currentPtr==NULL)
+       {
+           break;
+       }
+       nextPtr=nextPtr->next;
+    }
+    printf("outside loop\n");
+    (*tail)=(*head);
+    (*head)=prevPtr;
+
+}
+
 void main()
 {
     int choice;
@@ -286,6 +314,9 @@ void main()
             break;
         case 9:
             deleteAtPosition(&first, &last);
+            break;
+        case 10:
+            reverseDoublyLinkedList(&first, &last);
             break;
         case 0:
             printf("Thank you\n");
