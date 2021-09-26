@@ -170,10 +170,10 @@ void main()
             break;
 
         case 0:
-            printf("Thank you\n");
+            printf("Thank you so much\n");
             break;
         default:
-            printf("invalid choice\n");
+            printf("Invalid  choice\n");
             break;
         }
 
