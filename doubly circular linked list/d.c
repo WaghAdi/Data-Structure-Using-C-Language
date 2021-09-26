@@ -101,7 +101,7 @@ void insertAtPosition(struct node *head, struct node *tail)
         struct node *newNode = createNode();
         int value;
         int flag = 0;
-        printf("Enter data after which you want to add node\n");
+        printf("Enter data after which you want to add new node\n");
         scanf("%d", &value);
         struct node *temp = head;
         do
