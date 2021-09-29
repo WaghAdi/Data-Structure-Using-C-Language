@@ -1,3 +1,10 @@
+/*
+Name:Wagh Aditya
+Topic:Stack using array
+*/
+
+// *******************solution ******************
+
 #include <stdio.h>
 #define max 10 //macro defination
 

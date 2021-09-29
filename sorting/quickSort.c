@@ -1,3 +1,10 @@
+/*
+Name:Wagh Aditya
+Topic:-Quick Sort 
+*/
+
+// *******************solution ******************
+
 #include <stdio.h>
 
 void quickSort(int a[], int l, int h)
@@ -50,7 +57,7 @@ void main()
     printf("array before sorting is\n");
     for (int i = 0; i < n; i++)
     {
-        printf("%d\t",a[i]);
+        printf("%d\t", a[i]);
     }
     int l = 0;
     int h = n - 1;

@@ -1,3 +1,10 @@
+/*
+Name:Wagh Aditya
+Topic:Binary Search Iterative Method
+*/
+
+// *******************solution ******************
+
 #include <stdio.h>
 void binarySearch(int a[], int low, int high, int search)
 {
