@@ -40,18 +40,18 @@ int cheakBalance(struct stack *s1, char exp[])
         {
             if (isEmpty(*s1) == 1)
             {
-                return 1;
+                return 0;
             }
             else if (pop(s1) != '(')
             {
-                return 1;
+                return 0;
             }
         }
         i++;
     }
     if (isEmpty(*s1) == 1)
     {
-        return 0;
+        return 1;
     }
 }
 
@@ -63,7 +63,7 @@ void main()
     printf("enter Expression\n");
     scanf("%s", &arr);
     int result = cheakBalance(&s1, arr);
-    if (result == 1)
+    if (result == 0)
     {
         printf("Not Balance Paranthesis\n");
     }
