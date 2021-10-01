@@ -5,8 +5,8 @@ Topic:Stack using LInked list
 
 // *******************solution ******************
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <stdio.h>  //headre file
+#include <stdlib.h> //header file to use malloc and free function
 struct stack
 {
     int data;
@@ -24,6 +24,8 @@ struct stack *createNode()
     return newNode;
 }
 
+//pushing element to stack
+
 void push(struct stack **top)
 {
     struct stack *newNode = NULL;
@@ -39,11 +41,13 @@ void push(struct stack **top)
     }
     printf("value added successfully\n");
 }
-
+//to cheak wether stack is empty or not
 int isEmpty(struct stack *top)
 {
     return (top == NULL);
 }
+
+//add element to stack
 int pop(struct stack **top)
 {
     int popValue;
@@ -56,7 +60,7 @@ int pop(struct stack **top)
 
 void main()
 {
-    struct stack *top = NULL;
+    struct stack *top = NULL; //pointer to maintain address of top element of Stack
 
     int choice;
     do
