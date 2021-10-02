@@ -6,20 +6,26 @@ struct stack
     int top;
     char a[max];
 };
+
+//cheak stack is empty or not
 int isEmpty(struct stack s1)
 {
     return s1.top == -1;
 }
+
+//cheak stack is full or not
 int isFull(struct stack s1)
 {
     return s1.top == (max - 1);
 }
 
+//push element to stack
 void push(struct stack *s1, char value)
 {
     (s1->top)++;
     s1->a[s1->top] = value;
 }
+//pop element from stack
 int pop(struct stack *s1)
 {
     char popvalue = s1->a[s1->top];
@@ -27,6 +33,7 @@ int pop(struct stack *s1)
     return popvalue;
 }
 
+//cheak balanec if yes return 1 or else rterun 0
 int cheakBalance(struct stack *s1, char exp[])
 {
     int i = 0;

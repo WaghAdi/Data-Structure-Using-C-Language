@@ -1,3 +1,13 @@
+/*balance paranthesis problme solving using stack 
+  logic 
+  if openign paranthis push to stack
+  push till get closing paranthesis
+  if closing paranthesis then 
+  1.if stack is empty then not balance 
+  2.else match pop element from stack with current if they are equalvaliht then repeta till end of expressiong
+  3.after end of expresion cheka wehte stack is empty if not then not balance or else balanced
+  */
+
 #include <stdio.h>
 #define max 100
 
@@ -51,11 +61,11 @@ int matching(char popItem, char currentChar)
 int cheakBalance(struct stack *s1, char exp[])
 {
     int i = 0;
-    while (exp[i] != '\0')
+    while (exp[i] != '\0') //traverse loop till last character
     {
-        if (exp[i] == '(' || exp[i] == '{' || exp[i] == '[')
+        if (exp[i] == '(' || exp[i] == '{' || exp[i] == '[') //push if opending paranthesis come
         {
-            push(s1, exp[i]);
+            push(s1, exp[i]); //push now to stack
         }
         else if (exp[i] == ')' || exp[i] == '}' || exp[i] == ']')
         {
@@ -64,7 +74,7 @@ int cheakBalance(struct stack *s1, char exp[])
                 return 0; //not balance expresssion
             }
             char popItem = pop(s1);
-            int matchingResult = matching(popItem, exp[i]);
+            int matchingResult = matching(popItem, exp[i]); //to cheak wehter closing paranthesis is related to opening parantheis
             if (matchingResult != 1)
             {
                 return 0;
