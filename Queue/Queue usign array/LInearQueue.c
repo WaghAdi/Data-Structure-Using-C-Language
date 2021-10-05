@@ -1,6 +1,7 @@
 #include <stdio.h>
-#define max 20
 
+#define max 20
+//structure for queue
 struct queue
 {
     int arr[max];
@@ -8,20 +9,23 @@ struct queue
     int rare;
 };
 
+//to initialize variable front and rare
 void init(struct queue *queue)
 {
     queue->front = queue->rare = -1;
 }
-
+// function to cheak queue is empty or not
 int isEmpty(struct queue *queue)
 {
     return queue->front == queue->rare;
 }
+
+// function to cheak queue is full or not
 int isFull(struct queue *queue)
 {
     return queue->rare == max - 1;
 }
-
+//fucntio to add data to queue
 void enqueue(struct queue *queue)
 {
     int data;
@@ -37,6 +41,7 @@ void enqueue(struct queue *queue)
         printf("Queue is full\n");
     }
 }
+//function to remove data from stack
 int dequeue(struct queue *queue)
 {
 
@@ -55,9 +60,9 @@ int dequeue(struct queue *queue)
 
 void main()
 {
-    struct queue q1;
+    struct queue q1; //variable of queue
     int choice;
-    init(&q1);
+    init(&q1); //initializing fun call
     do
     {
         printf("1 Enqueue\n");
