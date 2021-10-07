@@ -14,7 +14,7 @@ void quickSort(int a[], int l, int h)
     int high = h;
     while (low <= high)
     {
-        while (pivot > a[low])
+        while (pivot >= a[low])
         {
             low++;
         }
@@ -22,7 +22,7 @@ void quickSort(int a[], int l, int h)
         {
             high--;
         }
-        if (low <= high)
+        if (low < high)
         {
             int temp = a[low];
             a[low] = a[high];
