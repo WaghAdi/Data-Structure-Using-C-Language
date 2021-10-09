@@ -5,11 +5,13 @@ topic:Bubble Sort
 */
 
 #include <stdio.h>
+
+//sorting logic
 void bubbleSort(int arr[], int n)
 {
-    for (int i = 1; i < n; i++)
+    for (int i = 1; i < n; i++) //for loop to iterate element
     {
-        for (int j = 0; j < n - i; j++)
+        for (int j = 0; j < n - i; j++) //swappint loop
         {
             if (arr[j] > arr[j + 1])
             {
@@ -26,6 +28,7 @@ void main()
     printf("Enter How many Elements you want in array?\n");
     scanf_s("%d", &n);
     printf("Enter Array Elements: \n");
+    //taking array element as input from user
     for (int i = 0; i < n; i++)
     {
         scanf_s("%d", &arr[i]);
