@@ -1,14 +1,14 @@
-#include <stdio.h>
+#include <stdio.h> //header file
 #include <stdlib.h>
 
-struct node
+struct node //user defined data type structure
 {
     struct node *left;
     int data;
     struct node *right;
 };
 
-struct node *createNode()
+struct node *createNode() //function to create node and return address of created node
 {
     struct node *newnode = NULL;
 
@@ -31,13 +31,15 @@ struct node *createNode()
     return newnode;
 }
 
+// function to create binary search tree
+
 void createBST(struct node **root)
 {
     struct node *newnode = NULL;
     struct node *tempnode = *root;
     newnode = createNode();
 
-    if (*root == NULL)
+    if (*root == NULL) //if node is first node only
     {
         *root = newnode;
     }
@@ -77,7 +79,7 @@ void main()
 {
     struct node *root = NULL;
     int choice;
-
+    //menu driven program
     do
     {
 
