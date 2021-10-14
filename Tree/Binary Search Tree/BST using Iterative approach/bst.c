@@ -86,6 +86,20 @@ void preOrder(struct node *root)
     }
 }
 
+
+// inorder traversal 
+void inOrder(struct node *root)
+{
+    if (root != NULL)
+    {
+        inOrder(root->left);
+        printf("%d\t", root->data);
+        inOrder(root->right);
+    }
+}
+
+
+
 void main()
 {
     struct node *root = NULL;
@@ -113,6 +127,9 @@ void main()
             break;
         case 3:
             preOrder(root);
+            break;
+        case 3:
+            inorder(root);
             break;
         default:
             printf("Please Enter a Valid Choice.\n");
