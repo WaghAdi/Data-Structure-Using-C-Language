@@ -86,8 +86,7 @@ void preOrder(struct node *root)
     }
 }
 
-
-// inorder traversal 
+// inorder traversal
 void inOrder(struct node *root)
 {
     if (root != NULL)
@@ -98,7 +97,16 @@ void inOrder(struct node *root)
     }
 }
 
-
+//postorder traversal
+void postOrder(struct node *root)
+{
+    if (root != NULL)
+    {
+        postOrder(root->left);
+        postOrder(root->right);
+        printf("%d\t", root->data);
+    }
+}
 
 void main()
 {
@@ -125,11 +133,14 @@ void main()
         case 1:
             createBST(&root);
             break;
-        case 3:
+        case 2:
             preOrder(root);
             break;
         case 3:
             inorder(root);
+            break;
+        case 4:
+            postOrder(root);
             break;
         default:
             printf("Please Enter a Valid Choice.\n");
