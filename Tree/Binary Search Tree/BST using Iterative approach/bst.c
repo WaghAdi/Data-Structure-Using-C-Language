@@ -75,11 +75,22 @@ void createBST(struct node **root)
     }
 }
 
+// preorder traversal code
+void preOrder(struct node *root)
+{
+    if (root != NULL)
+    {
+        printf("%d\t", root->data);
+        preOrder(root->left);
+        preOrder(root->right);
+    }
+}
+
 void main()
 {
     struct node *root = NULL;
     int choice;
-    //menu driven program
+    //menu driven programSS
     do
     {
 
@@ -99,6 +110,9 @@ void main()
             break;
         case 1:
             createBST(&root);
+            break;
+        case 3:
+            preOrder(root);
             break;
         default:
             printf("Please Enter a Valid Choice.\n");
