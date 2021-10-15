@@ -1,16 +1,14 @@
-
-
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h> //header files
 
 struct node
 {
     struct node *left;
     int data;
     struct node *right;
-};
+}; //structure declearatioon  for user define data type
 
-struct node *createNode()
+struct node *createNode() //fun for creating a node
 {
     struct node *newnode = NULL;
 
@@ -33,7 +31,7 @@ struct node *createNode()
     return newnode;
 }
 
-void recuusiveBST(struct node *curuentRoot, struct node *newnode)
+void recuusiveBST(struct node *curuentRoot, struct node *newnode) //fun which call recursively
 {
     struct node *temp = curuentRoot;
     if (temp->data < newnode->data)
@@ -60,7 +58,7 @@ void recuusiveBST(struct node *curuentRoot, struct node *newnode)
     }
 }
 
-void createBST(struct node **root)
+void createBST(struct node **root) //main recursive function
 {
     struct node *newnode = NULL;
     newnode = createNode();
@@ -78,7 +76,7 @@ void main()
 {
     struct node *root = NULL;
     int choice;
-
+    //menu driven program
     do
     {
 
