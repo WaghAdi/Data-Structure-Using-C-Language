@@ -108,10 +108,35 @@ void postOrder(struct node *root)
     }
 }
 
+void searchNode(struct node *root, int searchData)
+{
+    struct node *temp = root;
+    if (temp == NULL)
+    {
+        printf("Data Not Found\n");
+    }
+    else
+    {
+        if (temp->data == searchData)
+        {
+            printf("Data Found\n");
+        }
+        else if (temp->data < searchData)
+        {
+            searchNode(temp->right, searchData);
+        }
+        else
+        {
+            searchNode(temp->left, searchData);
+        }
+    }
+}
+
 void main()
 {
     struct node *root = NULL;
     int choice;
+    int data;
     //menu driven programSS
     do
     {
@@ -121,9 +146,16 @@ void main()
         printf("2. Preorder Traversal.\n");
         printf("3. Inorder Traversal.\n");
         printf("4. Postorder Traversal.\n");
+        printf("5.SearchNode n");
         printf("0. Exit.\n");
         printf("Choice = ");
         scanf("%d", &choice);
+        if (choice == 5)
+        {
+
+            printf("enter data to serch\n");
+            scanf("%d", &data);
+        }
 
         switch (choice)
         {
@@ -137,10 +169,14 @@ void main()
             preOrder(root);
             break;
         case 3:
-            inorder(root);
+            inOrder(root);
             break;
         case 4:
             postOrder(root);
+            break;
+        case 5:
+
+            searchNode(root, data);
             break;
         default:
             printf("Please Enter a Valid Choice.\n");
