@@ -108,6 +108,8 @@ void postOrder(struct node *root)
     }
 }
 
+//searching in bst it takes lon(n) time to search element similar to binary search
+
 void searchNode(struct node *root, int searchData)
 {
     struct node *temp = root;
@@ -131,7 +133,7 @@ void searchNode(struct node *root, int searchData)
         }
     }
 }
-
+//fun to find minimum element from tree
 struct node *findMin(struct node *root)
 {
     if (root->left == NULL)
@@ -144,6 +146,8 @@ struct node *findMin(struct node *root)
     }
     return root;
 }
+
+// fun to delete a node from bst
 
 struct node *deleteBST(struct node *root, int Data)
 {
