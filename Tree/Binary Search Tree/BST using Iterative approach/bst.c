@@ -132,11 +132,68 @@ void searchNode(struct node *root, int searchData)
     }
 }
 
+struct node *findMin(struct node *root)
+{
+    if (root->left == NULL)
+    {
+        return root;
+    }
+    else
+    {
+        findMin(root->left);
+    }
+    return root;
+}
+
+struct node *deleteBST(struct node *root, int Data)
+{
+    if (root == NULL)
+    {
+        return NULL;
+    }
+    else if (root->data > Data)
+    {
+        deleteBST(root->left, Data);
+    }
+    else if (root->data < Data)
+    {
+        deleteBST(root->right, Data);
+    }
+    else
+    {
+        if (root->left == NULL && root->right == NULL)
+        {
+            free(root);
+            root = NULL;
+        }
+        else if (root->left == NULL)
+        {
+            struct node *temp = root;
+            root = root->right;
+            free(temp);
+        }
+        else if (root->right == NULL)
+        {
+            struct node *temp = root;
+            root = root->left;
+            free(temp);
+        }
+        else
+        {
+            struct node *rightMin = findMin(root->right);
+            root->data = rightMin->data;
+            root->right = deleteBST(root->right, rightMin->data);
+        }
+        return root;
+    }
+}
+
 void main()
 {
     struct node *root = NULL;
     int choice;
     int data;
+    int deleteData;
     //menu driven programSS
     do
     {
@@ -146,7 +203,8 @@ void main()
         printf("2. Preorder Traversal.\n");
         printf("3. Inorder Traversal.\n");
         printf("4. Postorder Traversal.\n");
-        printf("5.SearchNode n");
+        printf("5.SearchNode\n");
+        printf("6.Delete Node\n");
         printf("0. Exit.\n");
         printf("Choice = ");
         scanf("%d", &choice);
@@ -155,6 +213,12 @@ void main()
 
             printf("enter data to serch\n");
             scanf("%d", &data);
+        }
+        if (choice == 6)
+        {
+
+            printf("enter data to delte\n");
+            scanf("%d", &deleteData);
         }
 
         switch (choice)
@@ -177,6 +241,10 @@ void main()
         case 5:
 
             searchNode(root, data);
+            break;
+        case 6:
+
+            root = deleteBST(root, deleteData);
             break;
         default:
             printf("Please Enter a Valid Choice.\n");
