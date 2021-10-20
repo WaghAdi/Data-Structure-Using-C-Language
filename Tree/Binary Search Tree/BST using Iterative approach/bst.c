@@ -133,35 +133,43 @@ void searchNode(struct node *root, int searchData)
         }
     }
 }
+
+
 //fun to find minimum element from tree
+
 struct node *findMin(struct node *root)
 {
-    if (root->left == NULL)
+    if (root == NULL)
+    {
+        return NULL;
+    }
+    else if (root->left == NULL)
     {
         return root;
     }
     else
     {
-        findMin(root->left);
+        return findMin(root->left);
     }
-    return root;
 }
+
 
 // fun to delete a node from bst
 
-struct node *deleteBST(struct node *root, int Data)
+struct node *DeleteNode(struct node *root, int Data)
 {
+    struct node *temp = NULL;
     if (root == NULL)
     {
         return NULL;
     }
     else if (root->data > Data)
     {
-        deleteBST(root->left, Data);
+        root->left = DeleteNode(root->left, Data);
     }
     else if (root->data < Data)
     {
-        deleteBST(root->right, Data);
+        root->right = DeleteNode(root->right, Data);
     }
     else
     {
@@ -169,28 +177,34 @@ struct node *deleteBST(struct node *root, int Data)
         {
             free(root);
             root = NULL;
+            return root;
         }
-        else if (root->left == NULL)
+        else if (root->left == NULL && root->right != NULL)
         {
-            struct node *temp = root;
+            temp = root;
             root = root->right;
             free(temp);
+            return root;
         }
-        else if (root->right == NULL)
+        else if (root->right == NULL && root->left != NULL)
         {
-            struct node *temp = root;
+            temp = root;
             root = root->left;
             free(temp);
+            return root;
         }
         else
         {
             struct node *rightMin = findMin(root->right);
             root->data = rightMin->data;
-            root->right = deleteBST(root->right, rightMin->data);
+            root->right = DeleteNode(root->right, rightMin->data);
+            return root;
         }
-        return root;
     }
 }
+
+
+
 
 void main()
 {
