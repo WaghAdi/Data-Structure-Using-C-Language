@@ -135,7 +135,7 @@ void searchNode(struct node *root, int searchData)
 }
 
 
-//fun to find minimum element from tree
+//fun to find minimum element from tree means succesor of node which not having NULL at it's right 
 
 struct node *findMin(struct node *root)
 {
@@ -262,7 +262,7 @@ void main()
             break;
         case 6:
 
-            root = deleteBST(root, deleteData);
+            root = DeleteNode(root, deleteData);
             break;
         default:
             printf("Please Enter a Valid Choice.\n");
