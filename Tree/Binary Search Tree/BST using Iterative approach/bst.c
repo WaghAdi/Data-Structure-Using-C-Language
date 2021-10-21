@@ -203,7 +203,7 @@ struct node *DeleteNode(struct node *root, int Data)
     }
 }
 
-//finding inorder successor of any node
+//function for finding inorder successor of any given node 
 struct node *inOrdersuccessor(struct node *root, int Data, struct node *pre, struct node *succ)
 {
     if (root == NULL)
