@@ -203,6 +203,34 @@ struct node *DeleteNode(struct node *root, int Data)
     }
 }
 
+//finding inorder successor of any node
+struct node *inOrdersuccessor(struct node *root, int Data, struct node *pre, struct node *succ)
+{
+    if (root == NULL)
+        return NULL;
+    else if (root->data > Data)
+    {
+        succ = root;
+        inOrdersuccessor(root->left, Data, pre, succ);
+    }
+    else if (root->data < Data)
+    {
+        pre = root;
+        inOrdersuccessor(root->right, Data, pre, succ);
+    }
+    else
+    {
+        if (root->right == NULL)
+        {
+            return succ;
+        }
+        else
+        {
+            succ = findMin(root->right);
+            return succ;
+        }
+    }
+}
 
 
 
@@ -212,6 +240,10 @@ void main()
     int choice;
     int data;
     int deleteData;
+     int succData;
+    struct node *pre = NULL;
+    struct node *succ = NULL;
+    struct node *successorPtr = NULL;
     //menu driven programSS
     do
     {
@@ -237,6 +269,11 @@ void main()
 
             printf("enter data to delte\n");
             scanf("%d", &deleteData);
+        }
+        if (choice == 7)
+        {
+            printf("Enter data of node whose successor want to find\n");
+            scanf("%d", &succData);
         }
 
         switch (choice)
@@ -264,6 +301,12 @@ void main()
 
             root = DeleteNode(root, deleteData);
             break;
+        case 7:
+
+         successorPtr = inOrdersuccessor(root, succData, pre, succ);
+            printf("successor data=: %d\n", successorPtr->data);
+            break;
+
         default:
             printf("Please Enter a Valid Choice.\n");
             break;
